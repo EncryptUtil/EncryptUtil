@@ -1,0 +1,23 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Java template
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+.gradle
+/.idea
+.DS_Store
+/build
+
+.gradle/6.3/vcsMetadata-1/
+.gradle/6.5/vcsMetadata-1/
+encrypt-util/build/generated/
+encrypt-util/build/tmp/
+encrypt-util/src/main/resources/
+encrypt-util/src/test/resources/
+src/
+.gitignore
