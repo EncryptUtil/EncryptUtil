@@ -16,22 +16,22 @@ public class EncryptTest {
         // AES:29ae13a9fcc71bc649220b7d39d5646a
         System.out.println("AES:" + CipherUtils.aesEncryptToHexString(data.getBytes(),null, key16.getBytes()));
         // AES:abcd1234
-        System.out.println("AES:" + new String(CipherUtils.aesDecrypt(CipherUtils.aesEncrypt(data.getBytes(),null, key16.getBytes()),null, key16.getBytes())));
+        System.out.println("AES:" + CipherUtils.aesDecryptToString(CipherUtils.aesEncrypt(data.getBytes(),null, key16.getBytes()),null, key16.getBytes()));
 
         // DES:7b81376bc511d077
         System.out.println("DES:" + CipherUtils.desEncryptToHexString(data.getBytes(),CipherUtils.DES_ECB_NoPadding, key16.getBytes()));
         // DES:abcd1234
-        System.out.println("DES:" + new String(CipherUtils.desDecrypt(CipherUtils.desEncrypt(data.getBytes(),CipherUtils.DES_ECB_NoPadding, key16.getBytes()),CipherUtils.DES_ECB_NoPadding, key16.getBytes())));
+        System.out.println("DES:" + CipherUtils.desDecryptToString(CipherUtils.desEncrypt(data.getBytes(),CipherUtils.DES_ECB_NoPadding, key16.getBytes()),CipherUtils.DES_ECB_NoPadding, key16.getBytes()));
 
         // DESede:33dd13b95f1e4b5d4c78eda39a623b09
         System.out.println("DESede:" + CipherUtils.desEdeEncryptToHexString(data.getBytes(),CipherUtils.DESede_ECB_PKCS5Padding, key24.getBytes()));
         // DESede:abcd1234
-        System.out.println("DESede:" + new String(CipherUtils.desEdeDecrypt(CipherUtils.desEdeEncrypt(data.getBytes(),CipherUtils.DESede_ECB_PKCS5Padding, key24.getBytes()),CipherUtils.DESede_ECB_PKCS5Padding, key24.getBytes())));
+        System.out.println("DESede:" + CipherUtils.desEdeDecryptToString(CipherUtils.desEdeEncrypt(data.getBytes(),CipherUtils.DESede_ECB_PKCS5Padding, key24.getBytes()),CipherUtils.DESede_ECB_PKCS5Padding, key24.getBytes()));
 
         // ARCFOUR:3f185b253d062275
         System.out.println("ARCFOUR:" + CipherUtils.arcFourEncryptToHexString(data.getBytes(), key16.getBytes()));
         // ARCFOUR:abcd1234
-        System.out.println("ARCFOUR:" + new String(CipherUtils.arcFourDecrypt(CipherUtils.arcFourEncrypt(data.getBytes(), key16.getBytes()), key16.getBytes())));
+        System.out.println("ARCFOUR:" + CipherUtils.arcFourDecryptToString(CipherUtils.arcFourEncrypt(data.getBytes(), key16.getBytes()), key16.getBytes()));
 
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
         keyPairGenerator.initialize(1024);
@@ -43,7 +43,7 @@ public class EncryptTest {
 
         byte[] rsaEncrypt = CipherUtils.rsaEncrypt(data.getBytes(),publicKey);
         System.out.println("RSA-Encrypt:" + Base64.getEncoder().encodeToString(rsaEncrypt));
-        System.out.println("RSA-Decrypt:" + new String(CipherUtils.rsaDecrypt(rsaEncrypt, privateKey)));
+        System.out.println("RSA-Decrypt:" + CipherUtils.rsaDecryptToString(rsaEncrypt, privateKey));
 
         // Blowfish:d73c2a4007f899ac3cc64298fb85cd51
         String blowfishEncrypt = CipherUtils.encryptToHexString(data.getBytes(),null, CipherUtils.Blowfish, key16.getBytes(),null);
